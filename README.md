@@ -1,7 +1,8 @@
-> :warning: 
+> :warning: **Note**
 > This project is in status: _**work in progress**_
+
+> :warning: **Note**
 > This documentation is in the making
-> :warning: 
 
 <h1 align="center" >
   <div>
