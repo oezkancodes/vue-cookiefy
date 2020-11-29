@@ -85,7 +85,7 @@
       .privacy__content {
         header {
           font-size: 1.25rem;
-          border-bottom: 1px solid rgb(200, 200, 200);
+          border-bottom: 1px solid #cdd1d3;
         }
 
         article {
@@ -104,7 +104,7 @@
         }
 
         .privacy__actions {
-          border-top: 1px solid rgb(200, 200, 200);
+          border-top: 1px solid #cdd1d3;
           text-align: right;
         }
 

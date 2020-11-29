@@ -1,7 +1,7 @@
 {
   "private": false,
   "name": "vue-cookiefy",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Cookie Manager for Vue",
   "license": "MIT",
   "keywords": [

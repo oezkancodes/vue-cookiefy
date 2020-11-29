@@ -1,6 +1,6 @@
 <template>
   <button
-    :class="filled ? 'filled' : ''"
+    :class="secondary ? 'secondary' : ''"
     @click="$emit('click')"
     v-text="text"
   ></button>
@@ -13,10 +13,12 @@
         type: String,
         default: 'Add text Prop',
       },
-      filled: {
+
+      secondary: {
         type: Boolean,
         default: false,
       },
+
       icon: {
         type: Boolean,
         default: false,
@@ -33,10 +35,10 @@
     height: 2.5rem;
     padding: 0 1rem;
     text-align: center;
-    border-radius: 40px;
-    background: #fff;
+    border-radius: 42px;
+    background: $color;
     border: 2px solid $color;
-    color: $color;
+    color: white;
     cursor: pointer;
     transition: all 0.25s ease;
 
@@ -45,12 +47,14 @@
     }
 
     &:hover {
-      color: white;
-      background: $color;
+      color: $color;
+      background: white;
     }
 
     &:active {
-      color: white;
+      color: rgba(0, 0, 0, 0.87);
+      background-color: #989da0;
+      border-color: #989da0;
     }
 
     &:after {
@@ -58,15 +62,17 @@
     }
 
     // filled
-    &.filled {
-      background-color: $color;
-      color: white;
+    &.secondary {
+      background-color: #eceff1;
+      border-color: #eceff1;
+      color: rgba(0, 0, 0, 0.87);
       &:hover {
-        color: white;
+        background-color: #cdd1d3;
+        border-color: #cdd1d3;
       }
       &:active {
-        color: $color;
-        background: white;
+        background-color: #989da0;
+        border-color: #989da0;
       }
     }
   }

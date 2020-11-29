@@ -41,6 +41,7 @@
             @click="onAccept"
           />
           <BaseButton
+            secondary
             :text="lang.privacy"
             :color="color"
             @click="onClickPrivacy"
