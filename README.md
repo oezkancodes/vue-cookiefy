@@ -20,8 +20,10 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Props](#props)
+- [Cookie & privacy fields](#cookie--privacy-fields)
 - [Events](#events)
 - [Response Structure](#response-structure)
+- [Custom Language](#custom-language)
 
 ## Features
 * Cookie banner overlay
@@ -66,11 +68,17 @@ export default {
 ```
 
 ## Props
-| Props            | Type       | Default     | Description                                                          |
-| :--------------- | :--------- | :---------- | :------------------------------------------------------------------- |
-| ``cookieField``  | ``Array``  | ``[]``      | Array of Objects containing the fields showed in the cookie overlay  |
-| ``privacyField`` | ``Array``  | ``[]``      | Array of Objects containing the fields showed in the privacy overlay |
-| ``color``        | ``String`` | ``#ff3d17`` | Color of the Elements                                                |
+| Props            | Type       | Default     | Description                                                                  |
+| :--------------- | :--------- | :---------- | :--------------------------------------------------------------------------- |
+| ``cookieField``  | ``Array``  | ``[]``      | ``Array`` of ``Objects`` containing the fields showed in the cookie overlay  |
+| ``privacyField`` | ``Array``  | ``[]``      | ``Array`` of ``Objects`` containing the fields showed in the privacy overlay |
+| ``innerText``    | ``String`` | Lorem Ipsum | Set the user information about the cookie usage on your app                  |
+| ``color``        | ``String`` | ``#ff3d17`` | Color of the Elements                                                        |
+| ``lang``         | ``Object`` | English     | Language of buttons and privacy overlay title                                |
+
+## Cookie & privacy fields
+
+You can easily define your cookies and privacy text as fields using the ``cookieFields`` & ``privacyFields`` props.
 
 ``` javascript
 <template>
@@ -79,35 +87,34 @@ export default {
       v-model="cookiefy"
       :cookieFields="cookieFields"
       :privacyFields="privacyFields"
-      @accept="onAccept" 
+      // ...
     />
   </div>
 </template>
 <script>
-
-export default {
-  name: 'YourComponent',
-  
-  data() {
-    return {
-      cookiefy: true,
-      cookieFields: [
-        {
-          text: 'Essential Cookies',
-          checked: true,
-          readonly: true,
-        },
-      ],
-      privacyFields: [
-        {
-          title: 'Essential Cookie Usage',
-          text:
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio id sed quas corporis...',
-        },
-      ],
-    }
-  },
-}
+  export default {
+    name: 'YourComponent',
+    
+    data() {
+      return {
+        cookiefy: true,
+        cookieFields: [
+          {
+            text: 'Essential Cookies',
+            checked: true,
+            readonly: true,
+          },
+        ],
+        privacyFields: [
+          {
+            title: 'Essential Cookie Usage',
+            text:
+              'Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio id sed quas corporis...',
+          },
+        ],
+      }
+    },
+  }
 </script>
 ```
 
@@ -121,28 +128,29 @@ export default {
   <div>
     <Cookiefy 
       v-model="cookiefy"
+      // ...
       @accept="onAccept" 
     />
   </div>
 </template>
+
 <script>
+  export default {
+    name: 'YourComponent',
+    
+    data() {
+      return {
+        cookiefy: true,
+        // ...
+      },
 
-export default {
-  name: 'YourComponent',
-  
-  data() {
-    return {
-      cookiefy: true,
-      // ...
+      methods: {
+        onAccept(fields) {
+          // handle user response here
+        }
+      },
     },
-
-    methods: {
-      onAccept(fields) {
-        // handle user response here
-      }
-    },
-  },
-}
+  }
 </script>
 ```
 
@@ -161,3 +169,35 @@ export default {
 ```
 
 Now after the user response you can set your essential and Google Analytics cookies savely
+
+## Custom Language
+You can easily change the language of the elements
+
+``` javascript
+<template>
+  <div>
+    <Cookiefy 
+      v-model="cookiefy"
+      // ...
+      :lang="lang"
+    />
+  </div>
+</template>
+
+<script>
+  export default {
+    name: 'YourComponent',
+    
+    data() {
+      return {
+        cookiefy: true,
+        // ...
+        lang: {
+          accept: 'Akzeptieren',
+          privacy: 'Datenschutz',
+          close: 'Schließen',
+        },
+      },
+    }
+</script>
+```
