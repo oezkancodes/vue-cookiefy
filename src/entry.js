@@ -5,9 +5,11 @@ import * as components from '@/lib-components/index';
 const install = function installVueCookiefy(Vue) {
   if (install.installed) return;
   install.installed = true;
-  Object.entries(components).forEach(([componentName, component]) => {
-    Vue.component(componentName, component);
-  });
+  Object.entries(components).forEach(
+    ([componentName, component]) => {
+      Vue.component(componentName, component);
+    }
+  );
 };
 
 // Create module definition for Vue.use()
