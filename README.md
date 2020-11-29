@@ -16,11 +16,19 @@
 
 ---
 
+![cookies](https://raw.githubusercontent.com/oezkancodes/vue-cookiefy/8dda0344a8ac91791d740f5e85f1748b6211cbce/static/base_component.png)
+
+---
+
+![privacy](https://raw.githubusercontent.com/oezkancodes/vue-cookiefy/8dda0344a8ac91791d740f5e85f1748b6211cbce/static/privacy_component.png)
+
+---
+
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Props](#props)
-- [Cookie & privacy fields](#cookie--privacy-fields)
+- [Custom fields](#custom-fields)
 - [Events](#events)
 - [Response Structure](#response-structure)
 - [Custom Language](#custom-language)
@@ -28,7 +36,7 @@
 ## Features
 * Cookie banner overlay
 * Privacy overlay
-* Custom color
+* Customizable color
 * Custumizable fields for cookies 
 
 ## Installation
@@ -37,15 +45,18 @@ npm install vue-cookiefy
 ```
 
 ## Usage
-Go to your ``main.js`` file and use Cookiefy
+First go to your ``main.js`` file and use Cookiefy
 ``` javascript
+// main.js
 import Vue from 'vue'
 import Cookiefy from 'vue-cookiefy'
 
 Vue.use(Cookiefy)
 ```
+
 Then you can add Cookiefy in any of your components
 ``` javascript
+// YourComponent.vue
 <template>
   <div>
     <Cookiefy 
@@ -68,15 +79,15 @@ export default {
 ```
 
 ## Props
-| Props            | Type       | Default     | Description                                                                  |
+| Prop             | Type       | Default     | Description                                                                  |
 | :--------------- | :--------- | :---------- | :--------------------------------------------------------------------------- |
 | ``cookieField``  | ``Array``  | ``[]``      | ``Array`` of ``Objects`` containing the fields showed in the cookie overlay  |
 | ``privacyField`` | ``Array``  | ``[]``      | ``Array`` of ``Objects`` containing the fields showed in the privacy overlay |
-| ``innerText``    | ``String`` | Lorem Ipsum | Set the user information about the cookie usage on your app                  |
+| ``innerText``    | ``String`` | Placeholder | Set the user information about the cookie usage on your app                  |
 | ``color``        | ``String`` | ``#ff3d17`` | Color of the Elements                                                        |
 | ``lang``         | ``Object`` | English     | Language of buttons and privacy overlay title                                |
 
-## Cookie & privacy fields
+## Custom fields
 
 You can easily define your cookies and privacy text as fields using the ``cookieFields`` & ``privacyFields`` props.
 
@@ -87,7 +98,6 @@ You can easily define your cookies and privacy text as fields using the ``cookie
       v-model="cookiefy"
       :cookieFields="cookieFields"
       :privacyFields="privacyFields"
-      // ...
     />
   </div>
 </template>
@@ -107,7 +117,7 @@ You can easily define your cookies and privacy text as fields using the ``cookie
         ],
         privacyFields: [
           {
-            title: 'Essential Cookie Usage',
+            title: 'Essential Cookies',
             text:
               'Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio id sed quas corporis...',
           },
@@ -145,6 +155,7 @@ You can easily define your cookies and privacy text as fields using the ``cookie
       },
 
       methods: {
+        // this method is called when the user accepts 
         onAccept(fields) {
           // handle user response here
         }
@@ -155,23 +166,25 @@ You can easily define your cookies and privacy text as fields using the ``cookie
 ```
 
 ## Response Structure
+The ``@accept`` event returns all defined cookie fields as an ``Array``.
 ``` javascript
+// The returned Array of fields is structured like this
 [
   {
     text: 'Essential Cookies', 
     checked: true,
   },
   {
-    text: 'GA', 
+    text: 'Google Analytics', 
     checked: true
   }
 ]
 ```
 
-Now after the user response you can set your essential and Google Analytics cookies savely
+Now after you got the user response you can set your essential and Google Analytics cookies savely
 
 ## Custom Language
-You can easily change the language of the elements
+You can easily change the language/text of the elements by using the ``lang`` prop.
 
 ``` javascript
 <template>
@@ -201,3 +214,9 @@ You can easily change the language of the elements
     }
 </script>
 ```
+The prop ``lang`` has following changable fields:
+| Field       | Type   |
+| :---------- | :----- |
+| ``accept``  | String |
+| ``privacy`` | String |
+| ``close``   | String |
