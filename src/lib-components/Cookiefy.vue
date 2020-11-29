@@ -38,18 +38,13 @@
         type: Array,
         default: () => [
           {
-            text: 'Required Cookies',
+            text: 'Essential Cookies',
             checked: true,
             readonly: true,
           },
           {
             text: 'Google Analytics',
             checked: true,
-            readonly: false,
-          },
-          {
-            text: 'Facebook Analytics',
-            checked: false,
             readonly: false,
           },
         ],
@@ -59,7 +54,7 @@
         type: Array,
         default: () => [
           {
-            title: 'Lorem ipsum',
+            title: 'Essential Cookies',
             text:
               'Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio id sed quas corporis, ullam error voluptatum non maxime expedita facere omnis quisquam molestias cumque quos voluptas debitis dicta hic dolore.',
           },
