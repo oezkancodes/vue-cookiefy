@@ -18,12 +18,10 @@
         </section>
 
         <!-- text -->
-        <section class="vue-cookie__text">
-          Lorem, ipsum dolor sit amet consectetur
-          adipisicing elit. Enim illum ipsa quod labore
-          iure. Quidem a pariatur illo porro exercitationem
-          placeat, veniam alias molestias ea. Deserunt
-        </section>
+        <section
+          class="vue-cookie__text"
+          v-html="innerText"
+        ></section>
 
         <!-- fields -->
         <section class="vue-cookie__fields">
@@ -38,12 +36,12 @@
         <section class="vue-cookie__actions">
           <BaseButton
             filled
-            text="Accept"
+            :text="lang.accept"
             :color="color"
             @click="onAccept"
           />
           <BaseButton
-            text="Privacy"
+            :text="lang.privacy"
             :color="color"
             @click="onClickPrivacy"
           />
@@ -83,10 +81,22 @@
         type: Boolean,
         required: true,
       },
+
       cookieFields: {
         type: Array,
         required: true,
       },
+
+      innerText: {
+        type: String,
+        required: true,
+      },
+
+      lang: {
+        type: Object,
+        required: true,
+      },
+
       color: {
         type: String,
         required: true,
@@ -153,6 +163,7 @@
       .vue-cookie__content {
         position: relative;
         padding: 1.5rem;
+        width: 100%;
         max-width: 600px;
 
         .vue-cookie__credits {

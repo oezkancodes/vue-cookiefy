@@ -2,7 +2,7 @@
   <div v-if="value" class="privacy__wrapper">
     <div class="privacy__dialog">
       <div class="privacy__content">
-        <header>Privacy</header>
+        <header v-text="lang.privacy"></header>
         <article>
           <section
             v-for="(field, i) in privacyFields"
@@ -14,7 +14,7 @@
         </article>
         <div class="privacy__actions">
           <BaseButton
-            text="Close"
+            :text="lang.close"
             :color="color"
             @click="onClosePrivacy"
           />
@@ -35,10 +35,17 @@
         type: Boolean,
         required: true,
       },
+
       privacyFields: {
         type: Array,
         required: true,
       },
+
+      lang: {
+        type: Object,
+        required: true,
+      },
+
       color: {
         type: String,
         required: true,

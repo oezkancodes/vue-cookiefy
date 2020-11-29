@@ -3,12 +3,15 @@
     <Privacy
       v-model="showPrivacy"
       :color="color"
+      :lang="lang"
       :privacyFields="privacyFields"
     />
     <Cookie
       v-model="value"
       :color="color"
+      :innerText="innerText"
       :cookieFields="cookieFields"
+      :lang="lang"
       @accept="onAccept"
       @privacy="onClickPrivacy"
     />
@@ -34,6 +37,15 @@
         default: '#ff3d17',
       },
 
+      innerText: {
+        type: String,
+        default: `
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+          Enim illum ipsa quod labore iure. Quidem a pariatur illo 
+          porro exercitationem placeat, veniam alias molestias ea.
+        `,
+      },
+
       cookieFields: {
         type: Array,
         default: () => [
@@ -50,13 +62,32 @@
         ],
       },
 
+      lang: {
+        default: {
+          accept: 'Accept',
+          privacy: 'Privacy',
+          close: 'Close',
+        },
+      },
+
       privacyFields: {
         type: Array,
         default: () => [
           {
             title: 'Essential Cookies',
-            text:
-              'Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio id sed quas corporis, ullam error voluptatum non maxime expedita facere omnis quisquam molestias cumque quos voluptas debitis dicta hic dolore.',
+            text: `
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+              Enim illum ipsa quod labore iure. Quidem a pariatur illo 
+              porro exercitationem placeat, veniam alias molestias ea.
+            `,
+          },
+          {
+            title: 'Google Analytics',
+            text: `
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+              Enim illum ipsa quod labore iure. Quidem a pariatur illo 
+              porro exercitationem placeat, veniam alias molestias ea.
+            `,
           },
         ],
       },
