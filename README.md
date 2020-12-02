@@ -4,29 +4,41 @@
 > :warning: **Note**
 > This documentation is in the making
 
-<h1 align="center" >
+<h1 style="text-align: center;">
   <div>
     <img src="https://raw.githubusercontent.com/oezkancodes/vue-cookiefy/796228b0e2a4ff0090e307ee92f1c4ab9226e2ab/static/logo.svg" alt="cookiefy">
   </div>
   Cookiefy for Vue
 </h1>
-<p align="center">
-  A minimal <b>Cookie Manager</b> for Vue.js
+<p style="text-align: center;">
+  A minimal <b>Cookie Managenent UI</b> for Vue.js
 </p>
 
----
+<br />
+
+<h2 style="text-align: center;">Preview</h2>
+
+<p style="text-align: center;">
+  <b>Cookie Overlay</b>
+</p>
 
 ![cookies](https://raw.githubusercontent.com/oezkancodes/vue-cookiefy/8dda0344a8ac91791d740f5e85f1748b6211cbce/static/base_component.png)
 
----
+<p style="text-align: center;">
+  <b>Privacy Overlay</b>
+</p>
 
 ![privacy](https://raw.githubusercontent.com/oezkancodes/vue-cookiefy/8dda0344a8ac91791d740f5e85f1748b6211cbce/static/privacy_component.png)
 
----
 
+## Navigation
+
+- [Navigation](#navigation)
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
+  - [Vue.js](#vuejs)
+  - [Nuxt.js](#nuxtjs)
 - [Props](#props)
 - [Custom fields](#custom-fields)
 - [Events](#events)
@@ -34,18 +46,24 @@
 - [Custom Language](#custom-language)
 
 ## Features
-* Cookie banner overlay
-* Privacy overlay
-* Customizable color
-* Custumizable fields for cookies 
+
+* Cookie banner overlay UI
+* Privacy overlay UI
+* Customizable element color
+* Custumizable fields for cookies & privacy
 
 ## Installation
+
 ``` bash
 npm install vue-cookiefy
 ```
 
 ## Usage
-First go to your ``main.js`` file and use Cookiefy
+
+### Vue.js
+
+First go to your ``main.js`` file and register Cookiefy
+
 ``` javascript
 // main.js
 import Vue from 'vue'
@@ -55,6 +73,7 @@ Vue.use(Cookiefy)
 ```
 
 Then you can add Cookiefy in any of your components
+
 ``` javascript
 // YourComponent.vue
 <template>
@@ -77,6 +96,34 @@ export default {
 }
 </script>
 ```
+
+### Nuxt.js
+
+For Nuxt.js we will create a simple plugin to inject the Cookiefy component into your app.
+First create a file named ``cookiefy.js`` in your ``./plugins`` folder.
+
+``` javascript
+// ./plugins/cookiefy.js
+import Vue from 'vue'
+import Cookiefy from 'vue-cookiefy'
+
+Vue.use(Cookiefy)
+```
+
+Then register the plugin in your Nuxt.js configuration file ``nuxt.config.js``
+
+``` javascript
+// ./nuxt.config.js 
+export default {
+  // ...
+  plugins: [
+    '@/plugins/cookiefy.js'
+  ],
+  // ...
+}
+```
+
+Now you can use the ``<Cookiefy />`` component in any of your components
 
 ## Props
 | Prop             | Type       | Default     | Description                                                                  |
@@ -167,6 +214,7 @@ You can easily define your cookies and privacy text as fields using the ``cookie
 
 ## Response Structure
 The ``@accept`` event returns all defined cookie fields as an ``Array``.
+
 ``` javascript
 // The returned Array of fields is structured like this
 [
@@ -184,6 +232,7 @@ The ``@accept`` event returns all defined cookie fields as an ``Array``.
 Now after you got the user response you can set your essential and Google Analytics cookies savely
 
 ## Custom Language
+
 You can easily change the language/text of the elements by using the ``lang`` prop.
 
 ``` javascript
@@ -214,6 +263,7 @@ You can easily change the language/text of the elements by using the ``lang`` pr
     }
 </script>
 ```
+
 The prop ``lang`` has following changable fields:
 | Field       | Type   |
 | :---------- | :----- |
