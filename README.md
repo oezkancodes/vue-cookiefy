@@ -4,36 +4,17 @@
 > :warning: **Note**
 > This documentation is in the making
 
-<h1 style="text-align: center;">
-  <div>
-    <img src="https://raw.githubusercontent.com/oezkancodes/vue-cookiefy/796228b0e2a4ff0090e307ee92f1c4ab9226e2ab/static/logo.svg" alt="cookiefy">
-  </div>
-  Cookiefy for Vue
+<h1 align="center">
+  <img src="https://raw.githubusercontent.com/oezkancodes/vue-cookiefy/796228b0e2a4ff0090e307ee92f1c4ab9226e2ab/static/logo.svg" alt="cookiefy">
+  <p>Cookiefy for Vue</p>
 </h1>
-<p style="text-align: center;">
+<p align="center">
   A minimal <b>Cookie Managenent UI</b> for Vue.js
 </p>
 
-<br />
+<h2>Navigation</h2>
 
-<h2 style="text-align: center;">Preview</h2>
-
-<p style="text-align: center;">
-  <b>Cookie Overlay</b>
-</p>
-
-![cookies](https://raw.githubusercontent.com/oezkancodes/vue-cookiefy/8dda0344a8ac91791d740f5e85f1748b6211cbce/static/base_component.png)
-
-<p style="text-align: center;">
-  <b>Privacy Overlay</b>
-</p>
-
-![privacy](https://raw.githubusercontent.com/oezkancodes/vue-cookiefy/8dda0344a8ac91791d740f5e85f1748b6211cbce/static/privacy_component.png)
-
-
-## Navigation
-
-- [Navigation](#navigation)
+- [Preview](#preview)
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -44,6 +25,20 @@
 - [Events](#events)
 - [Response Structure](#response-structure)
 - [Custom Language](#custom-language)
+
+## Preview
+
+<p>
+  <b>Cookie Overlay</b>
+</p>
+
+![cookies](https://raw.githubusercontent.com/oezkancodes/vue-cookiefy/8dda0344a8ac91791d740f5e85f1748b6211cbce/static/base_component.png)
+
+<p>
+  <b>Privacy Overlay</b>
+</p>
+
+![privacy](https://raw.githubusercontent.com/oezkancodes/vue-cookiefy/8dda0344a8ac91791d740f5e85f1748b6211cbce/static/privacy_component.png)
 
 ## Features
 
