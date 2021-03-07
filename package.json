@@ -2,7 +2,7 @@
   "private": false,
   "name": "vue-cookiefy",
   "repository": "https://github.com/oezkancodes/vue-cookiefy",
-  "version": "0.1.4",
+  "version": "0.1.6",
   "description": "Cookie Management UI for Vue.js",
   "author": {
     "name": "Özkan Yanikbas",

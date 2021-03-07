@@ -6,6 +6,7 @@
 </template>
 
 <script>
+  import storeModule from '../store/storeModule';
   import { mapGetters } from 'vuex';
   import PrivacyDialog from './PrivacyDialog.vue';
   import CookieDialog from './CookieDialog.vue';
@@ -101,6 +102,10 @@
       document.documentElement.style.setProperty(
         '--color',
         this.color
+      );
+      this.$store.registerModule(
+        'vueCookiefy',
+        storeModule
       );
       this.$store.commit('SET_COLOR', this.color);
       this.$store.commit('SET_INNER_TEXT', this.innerText);
