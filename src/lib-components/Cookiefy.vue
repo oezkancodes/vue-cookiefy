@@ -88,12 +88,6 @@
       };
     },
 
-    watch: {
-      value(newValue) {
-        this.setShowCookiefy(newValue);
-      },
-    },
-
     computed: {
       ...mapGetters(['show']),
     },
