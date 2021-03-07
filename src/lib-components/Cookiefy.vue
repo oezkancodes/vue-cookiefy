@@ -1,29 +1,19 @@
 <template>
   <div class="vue-cookie">
-    <Privacy
-      v-model="showPrivacy"
-      :color="color"
-      :lang="lang"
-      :privacyFields="privacyFields"
-    />
-    <Cookie
-      v-model="value"
-      :color="color"
-      :innerText="innerText"
-      :cookieFields="cookieFields"
-      :lang="lang"
-      @accept="onAccept"
-      @privacy="onClickPrivacy"
-    />
+    <PrivacyDialog :lang="lang" />
+    <CookieDialog :value="value" @accept="onAccept" />
   </div>
 </template>
 
 <script>
-  import Privacy from './Privacy.vue';
-  import Cookie from './Cookie.vue';
+  import { mapGetters } from 'vuex';
+  import PrivacyDialog from './PrivacyDialog.vue';
+  import CookieDialog from './CookieDialog.vue';
 
   export default {
-    components: { Privacy, Cookie },
+    name: 'Cookiefy',
+
+    components: { PrivacyDialog, CookieDialog },
 
     props: {
       value: {
@@ -39,11 +29,8 @@
 
       innerText: {
         type: String,
-        default: `
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-          Enim illum ipsa quod labore iure. Quidem a pariatur illo 
-          porro exercitationem placeat, veniam alias molestias ea.
-        `,
+        default:
+          'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim illum ipsa quod labore iure. Quidem a pariatur illo porro exercitationem placeat, veniam alias molestias ea.',
       },
 
       cookieFields: {
@@ -63,33 +50,34 @@
       },
 
       lang: {
-        default: {
-          accept: 'Accept',
-          privacy: 'Privacy',
-          close: 'Close',
+        default: () => {
+          return {
+            accept: 'Accept',
+            privacy: 'Privacy',
+            close: 'Close',
+          };
         },
       },
 
       privacyFields: {
-        type: Array,
-        default: () => [
-          {
-            title: 'Essential Cookies',
-            text: `
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-              Enim illum ipsa quod labore iure. Quidem a pariatur illo 
-              porro exercitationem placeat, veniam alias molestias ea.
-            `,
-          },
-          {
-            title: 'Google Analytics',
-            text: `
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-              Enim illum ipsa quod labore iure. Quidem a pariatur illo 
-              porro exercitationem placeat, veniam alias molestias ea.
-            `,
-          },
-        ],
+        type: Object,
+        default: () => {
+          return {
+            title: 'Privacy',
+            fields: [
+              {
+                title: 'Essential Cookies',
+                text:
+                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim illum ipsa quod labore iure. Quidem a pariatur illo porro exercitationem placeat, veniam alias molestias ea.',
+              },
+              {
+                title: 'Google Analytics',
+                text:
+                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim illum ipsa quod labore iure. Quidem a pariatur illo porro exercitationem placeat, veniam alias molestias ea.',
+              },
+            ],
+          };
+        },
       },
     },
 
@@ -105,11 +93,26 @@
       },
     },
 
-    mounted() {
+    computed: {
+      ...mapGetters(['show']),
+    },
+
+    created() {
       document.documentElement.style.setProperty(
         '--color',
         this.color
       );
+      this.$store.commit('SET_COLOR', this.color);
+      this.$store.commit('SET_INNER_TEXT', this.innerText);
+      this.$store.commit(
+        'SET_COOKIE_FIELDS',
+        this.cookieFields
+      );
+      this.$store.commit(
+        'SET_PRIVACY_FIELDS',
+        this.privacyFields
+      );
+      this.$store.commit('SET_LANG', this.lang);
     },
 
     methods: {
@@ -117,12 +120,6 @@
         this.$emit('accept', fields);
         this.$emit('input', false);
       },
-
-      onClickPrivacy() {
-        this.showPrivacy = true;
-      },
-
-      setShowCookiefy() {},
     },
   };
 </script>

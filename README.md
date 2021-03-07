@@ -23,7 +23,7 @@
 - [Props](#props)
 - [Custom fields](#custom-fields)
 - [Events](#events)
-- [Response Structure](#response-structure)
+  - [Response Structure](#response-structure)
 - [Custom Language](#custom-language)
 
 ## Preview
@@ -121,13 +121,13 @@ export default {
 Now you can use the ``<Cookiefy />`` component in any of your components
 
 ## Props
-| Prop             | Type       | Default     | Description                                                                  |
-| :--------------- | :--------- | :---------- | :--------------------------------------------------------------------------- |
-| ``cookieField``  | ``Array``  | ``[]``      | ``Array`` of ``Objects`` containing the fields showed in the cookie overlay  |
-| ``privacyField`` | ``Array``  | ``[]``      | ``Array`` of ``Objects`` containing the fields showed in the privacy overlay |
-| ``innerText``    | ``String`` | Placeholder | Set the user information about the cookie usage on your app                  |
-| ``color``        | ``String`` | ``#ff3d17`` | Color of the Elements                                                        |
-| ``lang``         | ``Object`` | English     | Language of buttons and privacy overlay title                                |
+| Prop            | Type       | Default     | Description                                                  |
+| :-------------- | :--------- | :---------- | :----------------------------------------------------------- |
+| ``cookieField`` | ``Array``  | ``[]``      | Containing the fields to select showed in the cookie overlay |
+| ``privacyData`` | ``Array``  | ``[]``      | Contains the title and fields showed in the privacy overlay  |
+| ``innerText``   | ``String`` | Placeholder | Set the user information about the cookie usage on your app  |
+| ``color``       | ``String`` | ``#ff3d17`` | Primary color of the elements                                |
+| ``lang``        | ``Object`` | English     | Language of buttons                                          |
 
 ## Custom fields
 
@@ -171,9 +171,9 @@ You can easily define your cookies and privacy text as fields using the ``cookie
 ```
 
 ## Events
-| Event       | Description           | Return                                                                       |
-| :---------- | :-------------------- | :--------------------------------------------------------------------------- |
-| ``@accept`` | On user clicks accept | Returns an Array which contains all fields and results of the user selection |
+| Event       | Description           | Return                                                                           |
+| :---------- | :-------------------- | :------------------------------------------------------------------------------- |
+| ``@accept`` | On user clicks accept | Returns an ``Array`` which contains all fields and results of the user selection |
 
 ``` javascript
 <template>
@@ -207,8 +207,8 @@ You can easily define your cookies and privacy text as fields using the ``cookie
 </script>
 ```
 
-## Response Structure
-The ``@accept`` event returns all defined cookie fields as an ``Array``.
+### Response Structure
+The ``@accept`` event returns all defined fields as an ``Array``.
 
 ``` javascript
 // The returned Array of fields is structured like this

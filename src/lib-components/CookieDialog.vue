@@ -35,15 +35,12 @@
         <!-- actions -->
         <section class="vue-cookie__actions">
           <BaseButton
-            filled
             :text="lang.accept"
-            :color="color"
             @click="onAccept"
           />
           <BaseButton
             secondary
             :text="lang.privacy"
-            :color="color"
             @click="onClickPrivacy"
           />
         </section>
@@ -71,10 +68,13 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex';
   import Checkbox from './Checkbox.vue';
   import BaseButton from './BaseButton.vue';
 
   export default {
+    name: 'CookieDialog',
+
     components: { Checkbox, BaseButton },
 
     props: {
@@ -82,32 +82,15 @@
         type: Boolean,
         required: true,
       },
-
-      cookieFields: {
-        type: Array,
-        required: true,
-      },
-
-      innerText: {
-        type: String,
-        required: true,
-      },
-
-      lang: {
-        type: Object,
-        required: true,
-      },
-
-      color: {
-        type: String,
-        required: true,
-      },
     },
 
-    data() {
-      return {
-        fields: this.cookieFields,
-      };
+    computed: {
+      ...mapGetters([
+        'color',
+        'innerText',
+        'cookieFields',
+        'lang',
+      ]),
     },
 
     methods: {
@@ -124,7 +107,7 @@
       },
 
       onClickPrivacy() {
-        this.$emit('privacy');
+        this.$store.commit('SET_SHOW_PRIVACY', true);
       },
 
       onClickCredits() {
@@ -146,7 +129,7 @@
     height: 100%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.1);
-    z-index: 9999;
+    z-index: 100;
 
     .vue-cookie__dialog {
       position: absolute;

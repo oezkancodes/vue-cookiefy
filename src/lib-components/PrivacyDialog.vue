@@ -1,11 +1,11 @@
 <template>
-  <div v-if="value" class="privacy__wrapper">
+  <div v-if="showPrivacy" class="privacy__wrapper">
     <div class="privacy__dialog">
       <div class="privacy__content">
-        <header v-text="lang.privacy"></header>
+        <header v-text="privacyData.title"></header>
         <article>
           <section
-            v-for="(field, i) in privacyFields"
+            v-for="(field, i) in privacyData.fields"
             :key="i"
           >
             <h1 v-html="field.title"></h1>
@@ -15,7 +15,6 @@
         <div class="privacy__actions">
           <BaseButton
             :text="lang.close"
-            :color="color"
             @click="onClosePrivacy"
           />
         </div>
@@ -25,36 +24,21 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex';
   import BaseButton from './BaseButton.vue';
 
   export default {
+    name: 'PrivacyDialog',
+
     components: { BaseButton },
 
-    props: {
-      value: {
-        type: Boolean,
-        required: true,
-      },
-
-      privacyFields: {
-        type: Array,
-        required: true,
-      },
-
-      lang: {
-        type: Object,
-        required: true,
-      },
-
-      color: {
-        type: String,
-        required: true,
-      },
+    computed: {
+      ...mapGetters(['showPrivacy', 'privacyData', 'lang']),
     },
 
     methods: {
       onClosePrivacy() {
-        this.$emit('input', false);
+        this.$store.commit('SET_SHOW_PRIVACY', false);
       },
     },
   };
@@ -71,7 +55,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 10000;
+    z-index: 200;
 
     .privacy__dialog {
       background-color: white;
@@ -91,16 +75,6 @@
         article {
           max-height: 500px;
           overflow-y: auto;
-
-          h1 {
-            margin-top: 0;
-            margin-bottom: 0.5rem;
-            line-height: 1.5;
-            font-size: 1.25rem;
-          }
-          p {
-            line-height: 1.5;
-          }
         }
 
         .privacy__actions {

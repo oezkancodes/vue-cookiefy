@@ -1,13 +1,20 @@
 <template>
   <button
-    :class="secondary ? 'secondary' : ''"
+    :class="[
+      'button',
+      secondary ? 'button__secondary' : 'button__primary',
+    ]"
     @click="$emit('click')"
     v-text="text"
   ></button>
 </template>
 
 <script>
+  import { mapGetters } from 'vuex';
+
   export default {
+    name: 'BaseButton',
+
     props: {
       text: {
         type: String,
@@ -18,29 +25,30 @@
         type: Boolean,
         default: false,
       },
+    },
 
-      icon: {
-        type: Boolean,
-        default: false,
-      },
+    computed: {
+      ...mapGetters(['color']),
     },
   };
 </script>
 
 <style lang="scss" scoped>
   $color: var(--color);
+  $grey: #989da0;
+  $light-grey: #eceff1;
 
-  button {
+  .button {
     outline: none;
     height: 2.5rem;
     padding: 0 1rem;
     text-align: center;
     border-radius: 42px;
     background: $color;
-    border: 2px solid $color;
+    border: 1px solid $color;
     color: white;
     cursor: pointer;
-    transition: all 0.25s ease;
+    transition: all 0.125s ease;
 
     font: {
       weight: 600;
@@ -53,8 +61,8 @@
 
     &:active {
       color: rgba(0, 0, 0, 0.87);
-      background-color: #989da0;
-      border-color: #989da0;
+      background-color: $grey;
+      border-color: $grey;
     }
 
     &:after {
@@ -62,17 +70,18 @@
     }
 
     // filled
-    &.secondary {
-      background-color: #eceff1;
-      border-color: #eceff1;
+    &.button__secondary {
+      background-color: $light-grey;
+      border-color: $light-grey;
       color: rgba(0, 0, 0, 0.87);
+
       &:hover {
         background-color: #cdd1d3;
         border-color: #cdd1d3;
       }
       &:active {
-        background-color: #989da0;
-        border-color: #989da0;
+        background-color: $grey;
+        border-color: $grey;
       }
     }
   }

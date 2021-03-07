@@ -8,13 +8,15 @@
     <label
       for="field"
       v-text="field.text"
-      @click="onClick"
+      @click="onClickCheckbox"
     ></label>
   </div>
 </template>
 
 <script>
   export default {
+    name: 'Checkbox',
+
     props: {
       field: {
         type: Object,
@@ -23,7 +25,7 @@
     },
 
     methods: {
-      onClick() {
+      onClickCheckbox() {
         if (!this.field.readonly) {
           this.field.checked = !this.field.checked;
         }
