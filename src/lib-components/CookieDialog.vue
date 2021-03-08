@@ -122,24 +122,28 @@
 
 <style lang="scss">
   .vue-cookie__wrapper {
-    color: rgba(0, 0, 0, 0.87);
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
+    color: rgba(0, 0, 0, 0.87);
     background-color: rgba(0, 0, 0, 0.1);
     z-index: 100;
 
+    // Center Dialog
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     .vue-cookie__dialog {
       position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
       background-color: white;
-      width: 100%;
+      max-width: 600px;
+      border-radius: 0.5rem;
       border: 1px solid rgb(201, 201, 201);
       box-shadow: 0 0 0.5rem 0.25rem rgba(0, 0, 0, 0.1);
+
       display: flex;
       justify-content: center;
       user-select: none;
@@ -159,8 +163,8 @@
         .vue-cookie__title {
           svg {
             margin: 0 0 0 -0.3rem;
-            height: 4rem;
-            width: 4rem;
+            height: 3rem;
+            width: 3rem;
           }
         }
 
