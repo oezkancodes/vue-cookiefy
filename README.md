@@ -15,6 +15,7 @@
 <h2>Navigation</h2>
 
 - [Features](#features)
+- [Vuex](#vuex)
 - [Installation](#installation)
 - [Usage](#usage)
   - [Vue.js](#vuejs)
@@ -35,7 +36,15 @@
 * GDPR compliant:
   * Opt-in
   * Easy to deny
-* You let Cookiefy handle the UI - you just handle the results 
+* You let Cookiefy handle the UI - you just handle the results
+
+## Vuex
+
+Cookiefy uses Vuex Store to handle state. **Vuex has to be installed** or Cookiefy wont work. For Vue.js you can use the Vue CLI to add Vuex with one command:
+
+``` bash
+vue add vuex
+```
 
 ## Installation
 
@@ -85,10 +94,10 @@ export default {
 ### Nuxt.js
 
 For Nuxt.js we will create a simple plugin to inject the Cookiefy component into your app.
-First create a file named ``cookiefy.js`` in your ``./plugins`` folder.
+First create a file named ``cookiefy.js`` in your ``@/plugins`` folder.
 
 ``` javascript
-// ./plugins/cookiefy.js
+// @/plugins/cookiefy.js
 import Vue from 'vue'
 import Cookiefy from 'vue-cookiefy'
 
@@ -98,7 +107,7 @@ Vue.use(Cookiefy)
 Then register the plugin in your Nuxt.js configuration file ``nuxt.config.js``
 
 ``` javascript
-// ./nuxt.config.js 
+// nuxt.config.js 
 export default {
   // ...
   plugins: [
@@ -108,7 +117,7 @@ export default {
 }
 ```
 
-Now you can use the ``<Cookiefy />`` component in any of your components
+Now you can use ``<Cookiefy />`` in any of your components.
 
 ## Props
 | Prop            | Type       | Default     | Description                                                  |
@@ -117,13 +126,14 @@ Now you can use the ``<Cookiefy />`` component in any of your components
 | ``privacyData`` | ``Array``  | ``[]``      | Contains the title and fields showed in the privacy overlay  |
 | ``innerText``   | ``String`` | Placeholder | Set the user information about the cookie usage on your app  |
 | ``color``       | ``String`` | ``#ff3d17`` | Primary color of the elements                                |
-| ``lang``        | ``Object`` | English     | Language of buttons                                          |
+| ``lang``        | ``Object`` | English     | Language of elements - [see here](#custom-language)          |
 
 ## Custom fields
 
 You can easily define your cookies and privacy text as fields using the ``cookieFields`` & ``privacyFields`` props.
 
 ``` javascript
+// YourComponent.vue
 <template>
   <div>
     <Cookiefy 
@@ -146,10 +156,20 @@ You can easily define your cookies and privacy text as fields using the ``cookie
             checked: true,
             readonly: true,
           },
+          {
+            text: 'Google Analytics',
+            checked: true,
+            readonly: true,
+          },
         ],
         privacyFields: [
           {
             title: 'Essential Cookies',
+            text:
+              'Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio id sed quas corporis...',
+          },
+          {
+            title: 'Google Analytics',
             text:
               'Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio id sed quas corporis...',
           },
@@ -169,7 +189,6 @@ You can easily define your cookies and privacy text as fields using the ``cookie
 <template>
   <div>
     <Cookiefy 
-      v-model="cookiefy"
       // ...
       @accept="onAccept" 
     />
@@ -179,19 +198,14 @@ You can easily define your cookies and privacy text as fields using the ``cookie
 <script>
   export default {
     name: 'YourComponent',
-    
-    data() {
-      return {
-        cookiefy: true,
-        // ...
-      },
 
-      methods: {
-        // this method is called when the user accepts 
-        onAccept(fields) {
-          // handle user response here
-        }
-      },
+    // ...
+    
+    methods: {
+      // this method is called when the user accepts 
+      onAccept(fields) {
+        // handle response here
+      }
     },
   }
 </script>
@@ -210,11 +224,12 @@ The ``@accept`` event returns all defined fields as an ``Array``.
   {
     text: 'Google Analytics', 
     checked: true
-  }
+  },
+  // ...
 ]
 ```
 
-Now after you got the user response you can set your essential and Google Analytics cookies savely
+Now after you got the user response you can set your Cookies safely.
 
 ## Custom Language
 
@@ -224,7 +239,6 @@ You can easily change the language/text of the elements by using the ``lang`` pr
 <template>
   <div>
     <Cookiefy 
-      v-model="cookiefy"
       // ...
       :lang="lang"
     />
@@ -237,7 +251,6 @@ You can easily change the language/text of the elements by using the ``lang`` pr
     
     data() {
       return {
-        cookiefy: true,
         // ...
         lang: {
           acceptAll: 'Alle akzeptieren',
