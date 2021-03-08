@@ -2,7 +2,7 @@
   "private": false,
   "name": "vue-cookiefy",
   "repository": "https://github.com/oezkancodes/vue-cookiefy",
-  "version": "0.1.6",
+  "version": "0.1.8",
   "description": "Cookie Management UI for Vue.js",
   "author": {
     "name": "Özkan Yanikbas",
@@ -12,15 +12,16 @@
   "license": "MIT",
   "keywords": [
     "cookie",
-    "dsvgo",
+    "ui",
+    "dsgvo",
+    "gdpr",
     "law",
+    "manager",
+    "management",
     "vue",
     "vue.js",
     "nuxt",
-    "nuxt.js",
-    "management",
-    "manager",
-    "ui"
+    "nuxt.js"
   ],
   "main": "dist/vue-cookiefy.ssr.js",
   "browser": "dist/vue-cookiefy.esm.js",
