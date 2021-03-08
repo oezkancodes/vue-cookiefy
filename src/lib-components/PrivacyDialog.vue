@@ -56,6 +56,7 @@
     height: 100%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.2);
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -63,12 +64,10 @@
 
     .privacy__dialog {
       background-color: white;
-      width: 100%;
       max-width: 500px;
       border: 1px solid rgb(200, 200, 200);
       border-radius: 0.5rem;
       box-shadow: 0 0 0.5rem 0.25rem rgba(0, 0, 0, 0.1);
-      user-select: none;
 
       .privacy__content {
         header {
@@ -77,7 +76,7 @@
         }
 
         article {
-          max-height: 500px;
+          max-height: 50vh;
           overflow-y: auto;
         }
 
