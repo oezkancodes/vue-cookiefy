@@ -6,6 +6,7 @@
 </template>
 
 <script>
+  import Cookie from 'js-cookie';
   import storeModule from '../store/storeModule';
   import { mapGetters } from 'vuex';
   import PrivacyDialog from './PrivacyDialog.vue';
@@ -100,6 +101,10 @@
     },
 
     created() {
+      const hasSeenCookiefy = Cookie.getJSON(
+        'COOKIEFY_SEEN'
+      );
+      this.$emit('input', hasSeenCookiefy ? false : true);
       document.documentElement.style.setProperty(
         '--color',
         this.color
@@ -125,6 +130,9 @@
 
     methods: {
       onAccept(fields) {
+        Cookie.set('COOKIEFY_SEEN', true, {
+          expires: 90,
+        });
         this.$emit('accept', fields);
         this.$emit('input', false);
       },
