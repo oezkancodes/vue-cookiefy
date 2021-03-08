@@ -37,6 +37,7 @@ A minimal **Cookie Managenent UI** for Vue.js
 * 🧠 Cookiefy remembers if it has been accepted and won't popup every reload
   * ✅ Sets a ``COOKIEFY_SEEN`` Cookie to ``true``
   * ✅ Is an essential Cookie and is also GDPR compliant
+  * ✅ Expires in 90 days
 * 🎨 Customizable fields for cookies & privacy
 * 🎨 Customizable color
 * ✨ You let Cookiefy handle the UI - you just handle the results
