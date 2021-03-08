@@ -2,10 +2,10 @@
   <div v-if="showPrivacy" class="privacy__wrapper">
     <div class="privacy__dialog">
       <div class="privacy__content">
-        <header v-text="privacyData.title"></header>
+        <header v-text="lang.infoTitle"></header>
         <article>
           <section
-            v-for="(field, i) in privacyData.fields"
+            v-for="(field, i) in privacyFields"
             :key="i"
           >
             <h1 v-html="field.title"></h1>
@@ -33,7 +33,11 @@
     components: { BaseButton },
 
     computed: {
-      ...mapGetters(['showPrivacy', 'privacyData', 'lang']),
+      ...mapGetters([
+        'showPrivacy',
+        'privacyFields',
+        'lang',
+      ]),
     },
 
     methods: {
@@ -60,7 +64,7 @@
     .privacy__dialog {
       background-color: white;
       width: 100%;
-      max-width: 400px;
+      max-width: 500px;
       border: 1px solid rgb(200, 200, 200);
       border-radius: 0.5rem;
       box-shadow: 0 0 0.5rem 0.25rem rgba(0, 0, 0, 0.1);

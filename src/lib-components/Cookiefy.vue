@@ -44,7 +44,12 @@
           },
           {
             text: 'Google Analytics',
-            checked: true,
+            checked: false,
+            readonly: false,
+          },
+          {
+            text: 'Facebook Analytics',
+            checked: false,
             readonly: false,
           },
         ],
@@ -53,32 +58,34 @@
       lang: {
         default: () => {
           return {
-            accept: 'Accept',
-            privacy: 'Privacy',
+            acceptAll: 'Accept all',
+            asSelected: 'As selected',
+            info: 'More',
             close: 'Close',
+            infoTitle: 'Information',
           };
         },
       },
 
       privacyFields: {
-        type: Object,
-        default: () => {
-          return {
-            title: 'Privacy',
-            fields: [
-              {
-                title: 'Essential Cookies',
-                text:
-                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim illum ipsa quod labore iure. Quidem a pariatur illo porro exercitationem placeat, veniam alias molestias ea.',
-              },
-              {
-                title: 'Google Analytics',
-                text:
-                  'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim illum ipsa quod labore iure. Quidem a pariatur illo porro exercitationem placeat, veniam alias molestias ea.',
-              },
-            ],
-          };
-        },
+        type: Array,
+        default: () => [
+          {
+            title: 'Essential Cookies',
+            text:
+              'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim illum ipsa quod labore iure. Quidem a pariatur illo porro exercitationem placeat, veniam alias molestias ea.',
+          },
+          {
+            title: 'Google Analytics',
+            text:
+              'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim illum ipsa quod labore iure. Quidem a pariatur illo porro exercitationem placeat, veniam alias molestias ea.',
+          },
+          {
+            title: 'Facebook Analytics',
+            text:
+              'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim illum ipsa quod labore iure. Quidem a pariatur illo porro exercitationem placeat, veniam alias molestias ea.',
+          },
+        ],
       },
     },
 
@@ -97,10 +104,12 @@
         '--color',
         this.color
       );
+      // Inject Vuex Module
       this.$store.registerModule(
         'vueCookiefy',
         storeModule
       );
+      // Update State
       this.$store.commit('SET_COLOR', this.color);
       this.$store.commit('SET_INNER_TEXT', this.innerText);
       this.$store.commit(

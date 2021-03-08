@@ -35,12 +35,18 @@
         <!-- actions -->
         <section class="vue-cookie__actions">
           <BaseButton
-            :text="lang.accept"
-            @click="onAccept"
+            v-if="acceptedAll"
+            :text="lang.acceptAll"
+            @click="onAcceptAll"
+          />
+          <BaseButton
+            :secondary="acceptedAll"
+            :text="lang.asSelected"
+            @click="onAcceptSelected"
           />
           <BaseButton
             secondary
-            :text="lang.privacy"
+            :text="lang.info"
             @click="onClickPrivacy"
           />
         </section>
@@ -91,10 +97,31 @@
         'cookieFields',
         'lang',
       ]),
+
+      acceptedAll() {
+        const values = this.cookieFields
+          .map((f) => f.checked)
+          .includes(false);
+        return values;
+      },
     },
 
     methods: {
-      onAccept() {
+      onAcceptAll() {
+        if (this.cookieFields.length > 0) {
+          const fields = this.cookieFields.map((field) => {
+            return {
+              text: field.text,
+              checked: true,
+              readonly: field.readonly,
+            };
+          });
+          this.$store.commit('SET_COOKIE_FIELDS', fields);
+          this.$emit('accept', fields);
+        }
+      },
+
+      onAcceptSelected() {
         if (this.cookieFields.length > 0) {
           const fields = this.cookieFields.map((field) => {
             return {

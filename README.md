@@ -14,7 +14,6 @@
 
 <h2>Navigation</h2>
 
-- [Preview](#preview)
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -26,26 +25,17 @@
   - [Response Structure](#response-structure)
 - [Custom Language](#custom-language)
 
-## Preview
-
-<p>
-  <b>Cookie Overlay</b>
-</p>
-
-![cookies](https://raw.githubusercontent.com/oezkancodes/vue-cookiefy/8dda0344a8ac91791d740f5e85f1748b6211cbce/static/base_component.png)
-
-<p>
-  <b>Privacy Overlay</b>
-</p>
-
-![privacy](https://raw.githubusercontent.com/oezkancodes/vue-cookiefy/8dda0344a8ac91791d740f5e85f1748b6211cbce/static/privacy_component.png)
 
 ## Features
 
 * Cookie banner overlay UI
-* Privacy overlay UI
-* Customizable element color
+* Information overlay UI
+* Customizable color
 * Custumizable fields for cookies & privacy
+* GDPR compliant:
+  * Opt-in
+  * Easy to deny
+* You let Cookiefy handle the UI - you just handle the results 
 
 ## Installation
 
@@ -250,9 +240,11 @@ You can easily change the language/text of the elements by using the ``lang`` pr
         cookiefy: true,
         // ...
         lang: {
-          accept: 'Akzeptieren',
-          privacy: 'Datenschutz',
+          acceptAll: 'Alle akzeptieren',
+          asSelected: 'Wie Auswahl',
+          info: 'Mehr',
           close: 'Schließen',
+          infoTitle: 'Informationen',
         },
       },
     }
@@ -260,8 +252,10 @@ You can easily change the language/text of the elements by using the ``lang`` pr
 ```
 
 The prop ``lang`` has following changable fields:
-| Field       | Type   |
-| :---------- | :----- |
-| ``accept``  | String |
-| ``privacy`` | String |
-| ``close``   | String |
+| Field          | Type   | Description  | Default       |
+| :------------- | :----- | :----------- | :------------ |
+| ``acceptAll``  | String | Button text  | "Accept all"  |
+| ``asSelected`` | String | Button text  | "As selected" |
+| ``info``       | String | Button text  | "More"        |
+| ``close``      | String | Button text  | "Close"       |
+| ``infoTitle``  | String | Dialog title | "Information" |

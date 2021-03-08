@@ -6,7 +6,7 @@ export default {
     color: null,
     innerText: null,
     cookieFields: null,
-    privacyData: null,
+    privacyFields: null,
 
     lang: null,
   },
@@ -17,7 +17,7 @@ export default {
     showPrivacy: (state) => state.showPrivacy,
     innerText: (state) => state.innerText,
     cookieFields: (state) => state.cookieFields,
-    privacyData: (state) => state.privacyData,
+    privacyFields: (state) => state.privacyFields,
     lang: (state) => state.lang,
   },
 
@@ -35,7 +35,7 @@ export default {
       state.cookieFields = value;
     },
     SET_PRIVACY_FIELDS: (state, value) => {
-      state.privacyData = value;
+      state.privacyFields = value;
     },
     SET_LANG: (state, value) => {
       state.lang = value;
