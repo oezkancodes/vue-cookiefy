@@ -4,39 +4,42 @@
 > :warning: **Note**
 > This documentation is in the making
 
-<h1 align="center">
-  <img src="https://raw.githubusercontent.com/oezkancodes/vue-cookiefy/796228b0e2a4ff0090e307ee92f1c4ab9226e2ab/static/logo.svg" alt="cookiefy">
-  <p>Cookiefy for Vue</p>
-</h1>
-<p align="center">
-  A minimal <b>Cookie Managenent UI</b> for Vue.js
-</p>
+<img src="https://raw.githubusercontent.com/oezkancodes/vue-cookiefy/796228b0e2a4ff0090e307ee92f1c4ab9226e2ab/static/logo.svg" alt="cookiefy">
 
-<h2>Navigation</h2>
+# Cookiefy for Vue
 
-- [Features](#features)
-- [Vuex](#vuex)
-- [Installation](#installation)
-- [Usage](#usage)
-  - [Vue.js](#vuejs)
-  - [Nuxt.js](#nuxtjs)
-- [Props](#props)
-- [Custom fields](#custom-fields)
-- [Events](#events)
-  - [Response Structure](#response-structure)
-- [Custom Language](#custom-language)
+A minimal **Cookie Managenent UI** for Vue.js
+
+## Navigation
+
+- [Cookiefy for Vue](#cookiefy-for-vue)
+  - [Navigation](#navigation)
+  - [Features](#features)
+  - [Vuex](#vuex)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [Vue.js](#vuejs)
+    - [Nuxt.js](#nuxtjs)
+  - [Props](#props)
+  - [Custom fields](#custom-fields)
+  - [Events](#events)
+    - [Response Structure](#response-structure)
+  - [Custom Language](#custom-language)
 
 
 ## Features
 
-* Cookie banner overlay UI
-* Information overlay UI
-* Customizable color
-* Custumizable fields for cookies & privacy
-* GDPR compliant:
-  * Opt-in
-  * Easy to deny
-* You let Cookiefy handle the UI - you just handle the results
+* 🎨 Cookie banner overlay UI
+* 🎨 Information overlay UI
+* 👨‍⚖️ GDPR compliant:
+  * ✅ Opt-in
+  * ✅ Easy to deny
+* 🧠 Cookiefy remembers if it has been accepted and won't popup every reload
+  * ✅ Sets a ``COOKIEFY_SEEN`` Cookie to ``true``
+  * ✅ Is an essential Cookie and is also GDPR compliant
+* 🎨 Customizable fields for cookies & privacy
+* 🎨 Customizable color
+* ✨ You let Cookiefy handle the UI - you just handle the results
 
 ## Vuex
 
