@@ -72,7 +72,7 @@
   }
 
   input[type='checkbox'].checkbox--readonly + label:after {
-    background-color: rgb(95, 95, 95);
+    background-color: rgb(160, 160, 160);
   }
 
   input[type='checkbox']:checked + label:before {
