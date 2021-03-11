@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <button @click="cookiefy = true">Open</button>
     <Cookiefy v-model="cookiefy" />
   </div>
 </template>
