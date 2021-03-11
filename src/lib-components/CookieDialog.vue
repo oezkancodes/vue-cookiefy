@@ -45,6 +45,12 @@
             @click="onAcceptSelected"
           />
           <BaseButton
+            v-if="!acceptedAll"
+            secondary
+            text="Deny All"
+            @click="onDenyAll"
+          />
+          <BaseButton
             secondary
             :text="lang.info"
             @click="onClickPrivacy"
@@ -109,13 +115,15 @@
     methods: {
       onAcceptAll() {
         if (this.cookieFields.length > 0) {
-          const fields = this.cookieFields.map((field) => {
-            return {
-              text: field.text,
-              checked: true,
-              readonly: field.readonly,
-            };
-          });
+          const fields = this.cookieFields.map(
+            ({ text, readonly }) => {
+              return {
+                text,
+                checked: true,
+                readonly,
+              };
+            }
+          );
           this.$store.commit('SET_COOKIE_FIELDS', fields);
           this.$emit('accept', fields);
         }
@@ -123,12 +131,32 @@
 
       onAcceptSelected() {
         if (this.cookieFields.length > 0) {
-          const fields = this.cookieFields.map((field) => {
-            return {
-              text: field.text,
-              checked: field.checked,
-            };
-          });
+          const fields = this.cookieFields.map(
+            ({ text, checked, readonly }) => {
+              return {
+                text,
+                checked,
+                readonly,
+              };
+            }
+          );
+          this.$store.commit('SET_COOKIE_FIELDS', fields);
+          this.$emit('accept', fields);
+        }
+      },
+
+      onDenyAll() {
+        if (this.cookieFields.length > 0) {
+          const fields = this.cookieFields.map(
+            ({ text, readonly, checked }) => {
+              return {
+                text,
+                checked: readonly ? checked : false,
+                readonly,
+              };
+            }
+          );
+          this.$store.commit('SET_COOKIE_FIELDS', fields);
           this.$emit('accept', fields);
         }
       },
@@ -139,7 +167,7 @@
 
       onClickCredits() {
         window.open(
-          'https://github.com/oezkancodes',
+          'https://github.com/oezkancodes/vue-cookiefy',
           '_blank'
         );
       },
@@ -156,6 +184,7 @@
     width: 100%;
     color: rgba(0, 0, 0, 0.87);
     background-color: rgba(0, 0, 0, 0.1);
+    overflow: hidden;
     z-index: 100;
 
     // Center Dialog
@@ -167,7 +196,6 @@
       position: absolute;
       background-color: white;
       max-width: 600px;
-      border-radius: 0.5rem;
       border: 1px solid rgb(201, 201, 201);
       box-shadow: 0 0 0.5rem 0.25rem rgba(0, 0, 0, 0.1);
 
@@ -210,10 +238,11 @@
           margin-top: 1.25rem;
           display: flex;
           align-items: center;
-          button {
-            margin-right: 0.25rem;
+
+          .button {
+            margin-right: 0.5rem;
           }
-          button:last-child {
+          .button:last-child {
             margin-right: 0;
           }
         }

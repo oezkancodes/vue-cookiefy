@@ -66,7 +66,6 @@
       background-color: white;
       max-width: 500px;
       border: 1px solid rgb(200, 200, 200);
-      border-radius: 0.5rem;
       box-shadow: 0 0 0.5rem 0.25rem rgba(0, 0, 0, 0.1);
 
       .privacy__content {
